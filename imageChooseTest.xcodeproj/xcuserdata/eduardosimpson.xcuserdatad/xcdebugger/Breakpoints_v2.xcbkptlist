@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "imageChooseTest/ViewController.swift"
+            timestampString = "488658652.217967"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "imageChooseTest/ViewController.swift"
+            timestampString = "488092269.614332"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "imageChooseTest.ViewController.TextFieldOne.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "imageChooseTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardosimpson/Documents/Swift%20Projects/imageChooseTest/imageChooseTest/ViewController.swift"
+                  timestampString = "488092269.622203"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "imageChooseTest.ViewController.TextFieldOne.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "imageChooseTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardosimpson/Documents/Swift%20Projects/imageChooseTest/imageChooseTest/ViewController.swift"
+                  timestampString = "488092269.622455"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "imageChooseTest.ViewController.TextFieldOne.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "imageChooseTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardosimpson/Documents/Swift%20Projects/imageChooseTest/imageChooseTest/ViewController.swift"
+                  timestampString = "488092269.622642"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "imageChooseTest.ViewController.init (imageChooseTest.ViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; imageChooseTest.ViewController"
+                  moduleName = "imageChooseTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardosimpson/Documents/Swift%20Projects/imageChooseTest/imageChooseTest/ViewController.swift"
+                  timestampString = "488092269.622844"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "294">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "imageChooseTest.ViewController.init (imageChooseTest.ViewController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;imageChooseTest.ViewController&gt;"
+                  moduleName = "imageChooseTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardosimpson/Documents/Swift%20Projects/imageChooseTest/imageChooseTest/ViewController.swift"
+                  timestampString = "488092269.622996"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "188">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
