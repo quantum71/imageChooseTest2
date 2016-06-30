@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNC-Go-xQQ">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNC-Go-xQQ" userLabel="myToolbar">
                                 <rect key="frame" x="4" y="556" width="592" height="44"/>
                                 <items>
                                     <barButtonItem title="Album" id="sky-yt-hut" userLabel="albumButton">
@@ -34,7 +34,7 @@
                                     </barButtonItem>
                                 </items>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="aBm-NF-shq"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="392-Tb-0HR"/>
                                 </connections>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sXI-wq-b86">
@@ -74,18 +74,23 @@
                             <constraint firstItem="OoS-1b-t6r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="19" id="pNl-EV-F7X"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Uf0-pI-Th3"/>
+                    <navigationItem key="navigationItem" id="Uf0-pI-Th3" userLabel="myNavbar">
+                        <connections>
+                            <outlet property="titleView" destination="8bC-Xf-vdC" id="2iO-X0-MKl"/>
+                        </connections>
+                    </navigationItem>
                     <connections>
                         <outlet property="TextFieldOne" destination="OoS-1b-t6r" id="IZr-Fa-Xcx"/>
                         <outlet property="TextFieldTwo" destination="56h-Rv-6V3" id="a6C-vW-yI4"/>
                         <outlet property="albumButton" destination="sky-yt-hut" id="li6-xv-tOn"/>
                         <outlet property="cameraButton" destination="9AS-79-IqZ" id="ir3-qd-mAp"/>
                         <outlet property="imageView" destination="sXI-wq-b86" id="h9v-cw-wvO"/>
+                        <outlet property="myToolbar" destination="KNC-Go-xQQ" id="0ok-by-P4P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="891" y="322"/>
+            <point key="canvasLocation" x="666" y="294"/>
         </scene>
     </scenes>
 </document>

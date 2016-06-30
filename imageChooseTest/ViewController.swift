@@ -17,6 +17,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var TextFieldOne: UITextField!
     @IBOutlet weak var TextFieldTwo: UITextField!
     var memedImage: UIImage!
+    @IBOutlet weak var myToolbar: UIToolbar!
+    
     
     let imageChooser = UIImagePickerController()
     
@@ -129,22 +131,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-  //  @IBOutlet weak var navBar: UINavigationBar!
-  //  @IBOutlet weak var toolBar: UIToolbar!
-    
     func generateMemedImage() -> UIImage
     {
         // Render view to an image
-    self.toolbar.hidden=true
-        
-        //    toolbar.hidden = true
+        myToolbar.hidden=true
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawViewHierarchyInRect(self.view.frame,
             afterScreenUpdates: true)
         let memedImage : UIImage =
         UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-     //   toolbar.hidden = false
+        myToolbar.hidden = false
         
         return memedImage
     }
