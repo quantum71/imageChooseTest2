@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
@@ -33,9 +33,6 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="392-Tb-0HR"/>
-                                </connections>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sXI-wq-b86">
                                 <rect key="frame" x="108" y="93" width="368" height="359"/>
@@ -57,12 +54,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cP4-1g-dKw" userLabel="shareButton">
+                                <rect key="frame" x="362" y="39" width="83" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" red="0.33810428720000002" green="1" blue="0.2988425629" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="sharingFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GH9-rK-c7s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="KNC-Go-xQQ" secondAttribute="bottom" id="Feb-fw-HHH"/>
+                            <constraint firstItem="cP4-1g-dKw" firstAttribute="leading" secondItem="OoS-1b-t6r" secondAttribute="trailing" constant="13" id="GbO-JQ-hTt"/>
                             <constraint firstItem="sXI-wq-b86" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-8" id="HDR-1c-LHb"/>
                             <constraint firstItem="sXI-wq-b86" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-27.5" id="Jib-KK-Gq7"/>
+                            <constraint firstItem="sXI-wq-b86" firstAttribute="top" secondItem="cP4-1g-dKw" secondAttribute="bottom" constant="24" id="LE2-VR-K8C"/>
                             <constraint firstItem="56h-Rv-6V3" firstAttribute="top" secondItem="sXI-wq-b86" secondAttribute="bottom" constant="2" id="QDe-S4-NcW"/>
                             <constraint firstItem="OoS-1b-t6r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UuQ-Ww-emt"/>
                             <constraint firstItem="sXI-wq-b86" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-27.5" id="WMj-8f-rGt"/>
@@ -85,12 +94,14 @@
                         <outlet property="albumButton" destination="sky-yt-hut" id="li6-xv-tOn"/>
                         <outlet property="cameraButton" destination="9AS-79-IqZ" id="ir3-qd-mAp"/>
                         <outlet property="imageView" destination="sXI-wq-b86" id="h9v-cw-wvO"/>
+                        <outlet property="myNavbar" destination="Uf0-pI-Th3" id="npf-5L-zRs"/>
                         <outlet property="myToolbar" destination="KNC-Go-xQQ" id="0ok-by-P4P"/>
+                        <outlet property="shareButton" destination="cP4-1g-dKw" id="ck8-5L-BIK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="666" y="294"/>
+            <point key="canvasLocation" x="880" y="289"/>
         </scene>
     </scenes>
 </document>

@@ -18,7 +18,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var TextFieldTwo: UITextField!
     var memedImage: UIImage!
     @IBOutlet weak var myToolbar: UIToolbar!
+    @IBOutlet weak var myNavbar: UINavigationItem!
+    @IBOutlet weak var shareButton: UIButton!
     
+    @IBAction func sharingFunction(sender: AnyObject) {
+        let sharedImage = generateMemedImage()
+        let instanceActivity = UIActivityViewController(activityItems: [sharedImage], applicationActivities: nil)
+        presentViewController(instanceActivity, animated: true, completion:nil)
+        instanceActivity.completionWithItemsHandler = {
+            (activity,success,items,error) in
+            
+            self.save()
+            instanceActivity.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    }
     
     let imageChooser = UIImagePickerController()
     
@@ -49,7 +63,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.TextFieldTwo.delegate = self
         TextFieldOne.defaultTextAttributes = memeTextAttributes
         TextFieldTwo.defaultTextAttributes = memeTextAttributes
-        
+        shareButton.enabled = false
     }
     
     //Tests whether device has a camera source and starts notification process
@@ -96,7 +110,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         print ("album")
         imageChooser.allowsEditing = false
         imageChooser.sourceType = .PhotoLibrary
+        shareButton.enabled = true
         presentViewController(imageChooser, animated: true, completion: nil)
+        
     }
     
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
@@ -104,13 +120,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
      imageChooser.allowsEditing = false
      imageChooser.sourceType = .Camera
-     presentViewController(imageChooser, animated: true, completion: nil)
+     shareButton.enabled = true
+        presentViewController(imageChooser, animated: true, completion: nil)
+     
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         view.frame.origin.y = 0
-    //    generateMemedImage()
+
         return true;
     }
     
@@ -123,6 +141,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 imageView.contentMode = .ScaleAspectFit
                 imageView.image = pickedImage
+                shareButton.enabled = true
             }
             dismissViewControllerAnimated(true, completion: nil)
     }
@@ -135,6 +154,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     {
         // Render view to an image
         myToolbar.hidden=true
+    //    myNavbar.hidden=true
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawViewHierarchyInRect(self.view.frame,
             afterScreenUpdates: true)
