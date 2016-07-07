@@ -35,52 +35,49 @@
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sXI-wq-b86">
-                                <rect key="frame" x="108" y="93" width="368" height="359"/>
+                                <rect key="frame" x="35" y="122" width="368" height="310"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="368" id="M6l-45-gcs"/>
+                                    <constraint firstAttribute="width" constant="368" id="2vX-QK-Jk6"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="OoS-1b-t6r" userLabel="topField">
-                                <rect key="frame" x="252" y="39" width="97" height="30"/>
+                                <rect key="frame" x="200" y="48" width="200" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="2If-5a-NkW"/>
-                                    <constraint firstAttribute="width" constant="97" id="CER-Iu-lFa"/>
+                                    <constraint firstAttribute="height" constant="50" id="2If-5a-NkW"/>
+                                    <constraint firstAttribute="width" constant="200" id="CER-Iu-lFa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="56h-Rv-6V3" userLabel="bottomField">
-                                <rect key="frame" x="252" y="454" width="97" height="30"/>
+                                <rect key="frame" x="200" y="434" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="c9I-YO-cs8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cP4-1g-dKw" userLabel="shareButton">
-                                <rect key="frame" x="362" y="39" width="83" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="83" id="r6C-3c-9mZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <color key="tintColor" red="0.33810428720000002" green="1" blue="0.2988425629" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Share"/>
-                                <connections>
-                                    <action selector="sharingFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GH9-rK-c7s"/>
-                                </connections>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1n8-Fv-VZ7">
+                                <rect key="frame" x="4" y="0.0" width="592" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="Kj0-e8-XYC">
+                                        <connections>
+                                            <action selector="mySharingButton:" destination="BYZ-38-t0r" id="uYr-Zd-DuC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="OoS-1b-t6r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="19" id="3uj-a1-wSF"/>
-                            <constraint firstItem="OoS-1b-t6r" firstAttribute="bottom" secondItem="cP4-1g-dKw" secondAttribute="bottom" id="Cnc-oO-Jsc"/>
-                            <constraint firstItem="sXI-wq-b86" firstAttribute="top" secondItem="OoS-1b-t6r" secondAttribute="bottom" constant="24" id="Dkr-jf-a4X"/>
+                            <constraint firstItem="OoS-1b-t6r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="28" id="3uj-a1-wSF"/>
+                            <constraint firstItem="sXI-wq-b86" firstAttribute="top" secondItem="OoS-1b-t6r" secondAttribute="bottom" constant="24" id="5eW-Ml-was"/>
+                            <constraint firstItem="sXI-wq-b86" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="BC3-al-DxQ"/>
                             <constraint firstItem="OoS-1b-t6r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hdh-Hc-SmB"/>
+                            <constraint firstItem="56h-Rv-6V3" firstAttribute="top" secondItem="sXI-wq-b86" secondAttribute="bottom" constant="2" id="XRb-ES-D5S"/>
                             <constraint firstItem="KNC-Go-xQQ" firstAttribute="top" secondItem="56h-Rv-6V3" secondAttribute="bottom" constant="72" id="XYf-n9-2f3"/>
                             <constraint firstItem="KNC-Go-xQQ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="arM-Zo-3qp"/>
-                            <constraint firstItem="sXI-wq-b86" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="88" id="cPa-iL-EvN"/>
-                            <constraint firstItem="cP4-1g-dKw" firstAttribute="leading" secondItem="OoS-1b-t6r" secondAttribute="trailing" constant="13" id="gRu-yI-Si5"/>
                             <constraint firstItem="KNC-Go-xQQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="hRZ-bT-pve"/>
-                            <constraint firstItem="56h-Rv-6V3" firstAttribute="top" secondItem="sXI-wq-b86" secondAttribute="bottom" constant="2" id="pGE-tt-7t0"/>
-                            <constraint firstItem="OoS-1b-t6r" firstAttribute="top" secondItem="cP4-1g-dKw" secondAttribute="top" id="v8k-rt-G1u"/>
                             <constraint firstItem="56h-Rv-6V3" firstAttribute="centerX" secondItem="KNC-Go-xQQ" secondAttribute="centerX" id="xRu-fW-4Cb"/>
                             <constraint firstItem="OoS-1b-t6r" firstAttribute="trailing" secondItem="56h-Rv-6V3" secondAttribute="trailing" id="y3m-M7-j5A"/>
                             <constraint firstItem="OoS-1b-t6r" firstAttribute="leading" secondItem="56h-Rv-6V3" secondAttribute="leading" id="z5w-Az-eh1"/>
@@ -97,14 +94,14 @@
                         <outlet property="cameraButton" destination="9AS-79-IqZ" id="ir3-qd-mAp"/>
                         <outlet property="imageView" destination="sXI-wq-b86" id="h9v-cw-wvO"/>
                         <outlet property="myNavbar" destination="Uf0-pI-Th3" id="npf-5L-zRs"/>
+                        <outlet property="myShareButton" destination="Kj0-e8-XYC" id="GaW-HU-Viq"/>
                         <outlet property="myToolbar" destination="KNC-Go-xQQ" id="0ok-by-P4P"/>
-                        <outlet property="shareButton" destination="cP4-1g-dKw" id="ck8-5L-BIK"/>
                         <outlet property="topField" destination="OoS-1b-t6r" id="O1g-Jv-E62"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880" y="289"/>
+            <point key="canvasLocation" x="1045" y="295"/>
         </scene>
     </scenes>
 </document>

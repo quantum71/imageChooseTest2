@@ -17,25 +17,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var memedImage: UIImage!
     @IBOutlet weak var myToolbar: UIToolbar!
     @IBOutlet weak var myNavbar: UINavigationItem!
-    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var topField: UITextField!
     @IBOutlet weak var bottomField: UITextField!
+    @IBOutlet weak var myShareButton: UIBarButtonItem!
     
-    @IBAction func sharingFunction(sender: AnyObject) {
+    @IBAction func mySharingButton(sender: AnyObject) {
         let sharedImage = generateMemedImage()
         let instanceActivity = UIActivityViewController(activityItems: [sharedImage], applicationActivities: nil)
         presentViewController(instanceActivity, animated: true, completion:nil)
         instanceActivity.completionWithItemsHandler = {
             (activity,success,items,error) in
-            
             self.save()
             instanceActivity.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
+        }
     }
     
     let imageChooser = UIImagePickerController()
     
+    //This code sets the attributes of the text in the text fields.
     let memeTextAttributes = [
         NSStrokeColorAttributeName : UIColor.blackColor(),
         NSForegroundColorAttributeName : UIColor.whiteColor(),
@@ -51,7 +50,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         var memedImage: UIImage
     }
     
-    //Getting ready for initial view
+    //Getting ready for initial view. Note that the share button is not enabled yet.
     override func viewDidLoad() {
         super.viewDidLoad()
         imageChooser.delegate = self
@@ -63,11 +62,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.bottomField.delegate = self
         topField.defaultTextAttributes = memeTextAttributes
         bottomField.defaultTextAttributes = memeTextAttributes
-        shareButton.enabled = false
-        
+        myShareButton.enabled = false
     }
     
-    //Tests whether device has a camera source and starts notification process
+    //Tests whether device has a camera source and starts notification process.
     //Adding the listener through the subscribeToKeyboardNotification
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -81,30 +79,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
-    
     //This function starts when viewWillAppear is loaded
     func subscribeToKeyboardNotifications() {
         let listener: NSNotificationCenter = NSNotificationCenter.defaultCenter()
         listener.addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         listener.addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-
     }
 
+    //This function is like a mirror of the above and starts when viewWillDisappear is loaded
     func unsubscribeFromKeyboardNotifications() {
         let listener: NSNotificationCenter = NSNotificationCenter.defaultCenter()
         listener.removeObserver(self, name: "keyboardWillShow", object: nil)
         listener.removeObserver(self, name: "keyboardWillHide", object: nil)
             }
     
-    //This shifts the current view up by the size of the keyboard
-    func keyboardWillShow(notification: NSNotification) {
-        print("testing keyboard will show")
+    //This shifts the current view up by the size of the keyboard if the bottom field is chosen.
+        func keyboardWillShow(notification: NSNotification) {
         if bottomField.isFirstResponder(){
         view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
 
-    //
+    //This is to move the keyboard back down.
     func keyboardWillHide(notification: NSNotification) {
         view.frame.origin.y += getKeyboardHeight(notification)
     }
@@ -117,32 +113,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
-        print ("album")
         imageChooser.allowsEditing = false
         imageChooser.sourceType = .PhotoLibrary
-        shareButton.enabled = true
+        myShareButton.enabled = true
         presentViewController(imageChooser, animated: true, completion: nil)
     }
     
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
-        print ("test")
-        
-     imageChooser.allowsEditing = false
-     imageChooser.sourceType = .Camera
-     shareButton.enabled = true
+        imageChooser.allowsEditing = false
+        imageChooser.sourceType = .Camera
+        myShareButton.enabled = true
         presentViewController(imageChooser, animated: true, completion: nil)
-     
+    }
+   
+    /*This is part of the built in functionality for text fields. It tells the
+    text field that is chosen to clear when chosen and to become the first 
+    responder.
+    */
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.text=""
+        textField.becomeFirstResponder()
     }
     
+    //If the user hits the return key, the view shifts back down.
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         view.frame.origin.y = 0
         return true;
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        textField.text=""
-        textField.becomeFirstResponder()
     }
     
     func imagePickerController(picker: UIImagePickerController,
@@ -150,7 +147,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 imageView.contentMode = .ScaleAspectFit
                 imageView.image = pickedImage
-                shareButton.enabled = true
+                myShareButton.enabled = true
             }
             dismissViewControllerAnimated(true, completion: nil)
     }
@@ -180,10 +177,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let topText = topField.text
         let bottomText = bottomField.text
         let memedImage = generateMemedImage()
-        
         let meme = Meme(text1: topText, text2: bottomText, image:
             imageView.image, memedImage: memedImage)
-        
     }
-    
 }
