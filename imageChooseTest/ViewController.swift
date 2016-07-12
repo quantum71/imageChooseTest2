@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MainViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var albumButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     var memedImage: UIImage!
     @IBOutlet weak var myToolbar: UIToolbar!
-    @IBOutlet weak var myNavbar: UINavigationItem!
+    @IBOutlet weak var topToolbar: UIImageView!
     @IBOutlet weak var topField: UITextField!
     @IBOutlet weak var bottomField: UITextField!
     @IBOutlet weak var myShareButton: UIBarButtonItem!
@@ -39,7 +39,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSStrokeColorAttributeName : UIColor.blackColor(),
         NSForegroundColorAttributeName : UIColor.whiteColor(),
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName : 5.0
+        NSStrokeWidthAttributeName : -7.0
     ]
 
     //Structure definition for Meme instances
@@ -56,13 +56,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imageChooser.delegate = self
         topField.text = "TOP"
         bottomField.text = "BOTTOM"
-        topField.textAlignment = .Center
-        bottomField.textAlignment = .Center
-        self.topField.delegate = self
-        self.bottomField.delegate = self
-        topField.defaultTextAttributes = memeTextAttributes
-        bottomField.defaultTextAttributes = memeTextAttributes
+        textCharacter()
         myShareButton.enabled = false
+    }
+    
+    func textCharacter(textField: UITextField) {
+        textField.textAlignment = .Center
+        textField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
     }
     
     //Tests whether device has a camera source and starts notification process.
@@ -94,15 +95,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
     
     //This shifts the current view up by the size of the keyboard if the bottom field is chosen.
-        func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(notification: NSNotification) {
         if bottomField.isFirstResponder(){
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        view.frame.origin.y = getKeyboardHeight(notification)
         }
     }
 
     //This is to move the keyboard back down.
     func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y += getKeyboardHeight(notification)
+        view.frame.origin.y = getKeyboardHeight(notification)
     }
     
     //Provided code, to get height of keyboard
@@ -113,19 +114,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
-        imageChooser.allowsEditing = false
         imageChooser.sourceType = .PhotoLibrary
+        imagecamFeed()
+    }
+    
+    @IBAction func pickAnImageFromCamera(sender: AnyObject) {
+        imageChooser.sourceType = .Camera
+        imagecamFeed()
+    }
+   
+    //I added this function per a suggestion on my project review.
+    func imagecamFeed (picker: UIImagePickerController){
+        imageChooser.allowsEditing = false
         myShareButton.enabled = true
         presentViewController(imageChooser, animated: true, completion: nil)
     }
     
-    @IBAction func pickAnImageFromCamera(sender: AnyObject) {
-        imageChooser.allowsEditing = false
-        imageChooser.sourceType = .Camera
-        myShareButton.enabled = true
-        presentViewController(imageChooser, animated: true, completion: nil)
-    }
-   
     /*This is part of the built in functionality for text fields. It tells the
     text field that is chosen to clear when chosen and to become the first 
     responder.
@@ -134,6 +138,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.text=""
         textField.becomeFirstResponder()
     }
+    
     
     //If the user hits the return key, the view shifts back down.
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -168,7 +173,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         myToolbar.hidden = false
-        self.navigationController?.navigationBarHidden=false
+        navigationController?.navigationBarHidden=false
         return memedImage
     }
     
