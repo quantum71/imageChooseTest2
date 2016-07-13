@@ -57,21 +57,16 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         topField.text = "TOP"
         bottomField.text = "BOTTOM"
         myShareButton.enabled = false
-        topField.textAlignment = .Center
-        bottomField.textAlignment = .Center
-        topField.delegate = self
-        bottomField.delegate = self
-        topField.defaultTextAttributes = memeTextAttributes
-        bottomField.defaultTextAttributes = memeTextAttributes
-    }
+        textCharacter(topField)
+        textCharacter(bottomField)
+      }
     
-    // I want to create this function and call it above in viewDidLoad but have been
-    // unable to. This was suggested in the code review.
-    //func textCharacter(textField: UITextField) {
-    //    textField.textAlignment = .Center
-    //    textField.delegate = self
-    //    textField.defaultTextAttributes = memeTextAttributes
-    //}
+    // This function was created to remove redundant code per the code review.
+    func textCharacter(textField: UITextField) {
+        textField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .Center
+    }
     
     //Tests whether device has a camera source and starts notification process.
     //Adding the listener through the subscribeToKeyboardNotification
@@ -122,10 +117,12 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
         imageChooser.sourceType = .PhotoLibrary
+        imagecamFeed(imageChooser)
     }
     
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
         imageChooser.sourceType = .Camera
+        imagecamFeed(imageChooser)
     }
    
     //I added this function per a suggestion on my project review to remove extra code but couldn't call it above in pickAnImageFromAlbum or pickAnImageFromCamera.
