@@ -26,9 +26,9 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let instanceActivity = UIActivityViewController(activityItems: [sharedImage], applicationActivities: nil)
         presentViewController(instanceActivity, animated: true, completion:nil)
         instanceActivity.completionWithItemsHandler = {
-            (activity,success,items,error) in
-            self.save()
-            instanceActivity.dismissViewControllerAnimated(true, completion: nil)
+        (activity,success,items,error) in
+        self.save()
+        instanceActivity.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
@@ -56,15 +56,22 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imageChooser.delegate = self
         topField.text = "TOP"
         bottomField.text = "BOTTOM"
-        textCharacter()
         myShareButton.enabled = false
+        topField.textAlignment = .Center
+        bottomField.textAlignment = .Center
+        topField.delegate = self
+        bottomField.delegate = self
+        topField.defaultTextAttributes = memeTextAttributes
+        bottomField.defaultTextAttributes = memeTextAttributes
     }
     
-    func textCharacter(textField: UITextField) {
-        textField.textAlignment = .Center
-        textField.delegate = self
-        textField.defaultTextAttributes = memeTextAttributes
-    }
+    // I want to create this function and call it above in viewDidLoad but have been
+    // unable to. This was suggested in the code review.
+    //func textCharacter(textField: UITextField) {
+    //    textField.textAlignment = .Center
+    //    textField.delegate = self
+    //    textField.defaultTextAttributes = memeTextAttributes
+    //}
     
     //Tests whether device has a camera source and starts notification process.
     //Adding the listener through the subscribeToKeyboardNotification
@@ -115,15 +122,13 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
         imageChooser.sourceType = .PhotoLibrary
-        imagecamFeed()
     }
     
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
         imageChooser.sourceType = .Camera
-        imagecamFeed()
     }
    
-    //I added this function per a suggestion on my project review.
+    //I added this function per a suggestion on my project review to remove extra code but couldn't call it above in pickAnImageFromAlbum or pickAnImageFromCamera.
     func imagecamFeed (picker: UIImagePickerController){
         imageChooser.allowsEditing = false
         myShareButton.enabled = true
@@ -139,7 +144,6 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         textField.becomeFirstResponder()
     }
     
-    
     //If the user hits the return key, the view shifts back down.
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -149,10 +153,10 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : AnyObject]){
-            if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                imageView.contentMode = .ScaleAspectFit
-                imageView.image = pickedImage
-                myShareButton.enabled = true
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        imageView.contentMode = .ScaleAspectFit
+        imageView.image = pickedImage
+        myShareButton.enabled = true
             }
             dismissViewControllerAnimated(true, completion: nil)
     }
