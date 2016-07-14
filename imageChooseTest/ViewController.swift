@@ -99,13 +99,13 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //This shifts the current view up by the size of the keyboard if the bottom field is chosen.
     func keyboardWillShow(notification: NSNotification) {
         if bottomField.isFirstResponder(){
-        self.view.frame.origin.y = getKeyboardHeight(notification)
+        self.view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
 
     //This is to move the keyboard back down.
     func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y = getKeyboardHeight(notification)
+        view.frame.origin.y = 0
     }
     
     //Provided code, to get height of keyboard
@@ -155,7 +155,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imageView.image = pickedImage
         myShareButton.enabled = true
             }
-            dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -169,7 +169,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.navigationController?.navigationBarHidden=true
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawViewHierarchyInRect(self.view.frame,
-            afterScreenUpdates: true)
+        afterScreenUpdates: true)
         let memedImage : UIImage =
         UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -184,6 +184,6 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let bottomText = bottomField.text
         let memedImage = generateMemedImage()
         let meme = Meme(text1: topText, text2: bottomText, image:
-            imageView.image, memedImage: memedImage)
+        imageView.image, memedImage: memedImage)
     }
 }
