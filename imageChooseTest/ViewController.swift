@@ -99,13 +99,13 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //This shifts the current view up by the size of the keyboard if the bottom field is chosen.
     func keyboardWillShow(notification: NSNotification) {
         if bottomField.isFirstResponder(){
-        view.frame.origin.y = getKeyboardHeight(notification)
+        self.view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
 
     //This is to move the keyboard back down.
     func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y = getKeyboardHeight(notification)
+        view.frame.origin.y += getKeyboardHeight(notification)
     }
     
     //Provided code, to get height of keyboard
