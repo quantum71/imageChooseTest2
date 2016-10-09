@@ -39,7 +39,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         NSStrokeColorAttributeName : UIColor.blackColor(),
         NSForegroundColorAttributeName : UIColor.whiteColor(),
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName : -7.0
+        NSStrokeWidthAttributeName : -4.0
     ]
 
     //Structure definition for Meme instances
@@ -54,8 +54,8 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         imageChooser.delegate = self
-        topField.text = "TOP"
-        bottomField.text = "BOTTOM"
+       // topField.text = "TOP"
+       // bottomField.text = "BOTTOM"
         myShareButton.enabled = false
         textCharacter(topField)
         textCharacter(bottomField)
